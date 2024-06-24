@@ -375,3 +375,21 @@ package com.atguigu.lease.web.admin.custom.config;
         registry.addConverterFactory(stringToBaseEnumConverterFactory);
     }
 ```
+
+### `TypeHandler`的枚舉類型轉換
+
+MyBatis 提供的`TypeHandler`也能處理大部分的類型轉換需求，譬如 String、Integer、Date 等等，其中也包含了 enums，而 enums 的默認轉換規則，也是 枚舉物件實例(ItemType.APARTMENT) &lrarr; 物件名稱("APARTMENT")，若是想改成 code屬性 &lrarr; ItemType.APARTMENT 的形式，在 MyBatis 中需要自定義 `TypeHandler`，而在MyBatis-Plus 則提供了一個`@EnumValue`的快速使用方式。
+
+#### 展示
+
+只要在 `code` 屬性上添增`@EnumValue`，即可讓`APARTMENT`、`ROOM`等 Enum 實例映射到`code`屬性上。
+
+<img src="img/Snipaste_2024-06-24_16-48-16.jpg" alt="enum" style="width:75%"/>
+
+### `HTTPMessageConverter`的枚舉類型轉換
+
+`HTTPMessageConverter`在將 obj 轉換成一個 json 格式時(`@ResponseBody`)，對於 enums 默認也是使用枚舉物件實例(ItemType.APARTMENT) &rarr; 枚舉物件名稱("APARTMENT")的方式，而若想實現枚舉物件實例(ItemType.APARTMENT) &rarr; code 屬性的話，也只需要在`code`添加一個`@JsonValue`即可。
+
+同理，從 json 轉換成 obj 時也是這樣(`@RequestBody`)。
+
+<img src="img/Snipaste_2024-06-24_16-48-16.jpg" alt="enum" style="width:75%"/>
