@@ -393,3 +393,11 @@ MyBatis 提供的`TypeHandler`也能處理大部分的類型轉換需求，譬�
 同理，從 json 轉換成 obj 時也是這樣(`@RequestBody`)。
 
 <img src="img/Snipaste_2024-06-24_16-48-16.jpg" alt="enum" style="width:75%"/>
+
+## MyBatis-Plus 的 ResultMap 編寫
+
+
+
+## tmp
+
+## tmp
